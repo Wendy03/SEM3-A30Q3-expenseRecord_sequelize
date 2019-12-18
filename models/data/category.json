@@ -1,0 +1,29 @@
+{
+  "category": {
+    "living": {
+      "name": "living",
+      "name_zh": "家居物業",
+      "image": "home"
+    },
+    "traffic": {
+      "name": "traffic",
+      "name_zh": "交通出行",
+      "image": "shuttle-van"
+    },
+    "entertainment": {
+      "name": "entertainment",
+      "name_zh": "休閒娛樂",
+      "image": "grin-beam"
+    },
+    "food": {
+      "name": "food",
+      "name_zh": "餐飲食品",
+      "image": "utensils"
+    },
+    "other": {
+      "name": "other",
+      "name_zh": "其他",
+      "image": "pen"
+    }
+  }
+}
