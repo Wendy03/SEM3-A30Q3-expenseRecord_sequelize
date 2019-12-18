@@ -1,0 +1,129 @@
+<div class="container">
+
+  <div class="justify-content-center row mt-5">
+
+    <div id="select-month">
+      <div class="btn-group dropright mr-5">
+        <button type="button" class="btn btn-outline-secondary dropdown-toggle monthDropdownBtn" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false" data-item="{{filterMonth}}">
+          {{#if filterMonth}}
+          {{{filterMonth}}} 月
+          {{else}}
+          月份
+          {{/if}}
+        </button>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" href="/?filterMonth=&filterCategory={{filterCategory}}">全部月份</a>
+          <a class="dropdown-item" href="/?filterMonth=1&filterCategory={{filterCategory}}">1月</a>
+          <a class="dropdown-item" href="/?filterMonth=2&filterCategory={{filterCategory}}">2月</a>
+          <a class="dropdown-item" href="/?filterMonth=3&filterCategory={{filterCategory}}">3月</a>
+          <a class="dropdown-item" href="/?filterMonth=4&filterCategory={{filterCategory}}">4月</a>
+          <a class="dropdown-item" href="/?filterMonth=5&filterCategory={{filterCategory}}">5月</a>
+          <a class="dropdown-item" href="/?filterMonth=6&filterCategory={{filterCategory}}">6月</a>
+          <a class="dropdown-item" href="/?filterMonth=7&filterCategory={{filterCategory}}">7月</a>
+          <a class="dropdown-item" href="/?filterMonth=8&filterCategory={{filterCategory}}">8月</a>
+          <a class="dropdown-item" href="/?filterMonth=9&filterCategory={{filterCategory}}">9月</a>
+          <a class="dropdown-item" href="/?filterMonth=10&filterCategory={{filterCategory}}">10月</a>
+          <a class="dropdown-item" href="/?filterMonth=11&filterCategory={{filterCategory}}">11月</a>
+          <a class="dropdown-item" href="/?filterMonth=12&filterCategory={{filterCategory}}">12月</a>
+        </div>
+      </div>
+    </div>
+
+    <div id="select-category">
+      <div class="btn-group dropright ml-5">
+        <button type="button" class="btn btn-outline-secondary dropdown-toggle ml-2 categoryDropdownBtn"
+          data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-item="{{filterCategory}}">
+          {{#if filterCategory}}
+          {{{categoryNameZh}}}
+          {{else}}
+          類別
+          {{/if}}
+        </button>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" href="/?filterMonth={{filterMonth}}&filterCategory=">全部類別</a>
+          <a class="dropdown-item" href="/?filterMonth={{filterMonth}}&filterCategory=living">家居物業</a>
+          <a class="dropdown-item" href="/?filterMonth={{filterMonth}}&filterCategory=traffic">交通出行</a>
+          <a class="dropdown-item" href="/?filterMonth={{filterMonth}}&filterCategory=entertainment">休閒娛樂</a>
+          <a class="dropdown-item" href="/?filterMonth={{filterMonth}}&filterCategory=food">餐飲食品</a>
+          <a class="dropdown-item" href="/?filterMonth={{filterMonth}}&filterCategory=other">其他</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-7 mx-auto">
+
+    <div class=" row mb-5">
+      <h4 class="mr-5">總金額:</h4>
+      <h1 class="text-danger">{{this.totalAmount}}</h1>
+    </div>
+
+    <table class="table table-striped table-hover mx-auto mb-5">
+
+      <tbody class="col-sm-12 m-auto">
+        {{#each records}}
+        <tr>
+          <th scope="row" class="text-right pt-4">
+            <h1><i class="fas fa-{{{this.icon}}} category"></i></h1>
+          </th>
+          <td>
+            <div class="colum pt-1">
+              <h4>{{ this.name }}</h4>
+              <p class="date">{{this.date}}</p>
+            </div>
+          </td>
+          <td class="pt-4">
+            <h4>{{this.merchant}}</h4>
+          </td>
+          <td class="pt-4">
+            <h4>{{ this.amount }}</h4>
+          </td>
+          <td class="row pt-4">
+            <a href="record/{{{this.id}}}/edit" class="btn btn-info" id="edit-btn">編輯</a>
+            <button type="button" data-toggle="modal" data-target="#delete{{{this.id}}}" class="btn btn-danger"
+              id="delete-btn">
+              刪除
+            </button>
+          </td>
+          <!-- Modal -->
+          <div class="modal" tabindex="-1" id="delete{{{this.id}}}" role="dialog">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title">提醒</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <h4>確定要刪除<span class="text-danger"> {{this.name}}</span> ?</h4>
+                </div>
+                <div class="modal-footer">
+                  <form action="/record/{{{this.id}}}/delete?_method=DELETE" method="POST" style="display: inline;">
+                    <button type="submit" class="btn btn-danger btn-sm mr-3">確認刪除</button>
+                  </form>
+                  <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">取消</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </tr>
+        {{/each}}
+      </tbody>
+    </table>
+
+    {{#if isDataEmpty}}
+    <div class="container ">
+      <h2 class="text-center">無支出資料</h2>
+    </div>
+    {{/if}}
+
+    <div class="justify-content-center add">
+      <a href="/record/new" class="btn btn-warning btn-lg mb-3 col-md-6 col-sm-8 ">新增支出</a>
+    </div>
+
+  </div>
+  <a href="#" class="back-to-top"><i class="fa fa-chevron-circle-up" aria-hidden="true"></i></a>
+
+</div>

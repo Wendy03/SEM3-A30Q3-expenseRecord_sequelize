@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>家庭記帳本</title>
+
+  <!-- include bootstrap stylesheets -->
+  <link rel="stylesheet" href="https://bootswatch.com/4/sketchy/bootstrap.min.css">
+
+  <!-- include fontawesome stylesheets -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.1/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <link rel="stylesheet" href="/stylesheets/{{style}}">
+</head>
+
+<body>
+  <!-- navigation -->
+  <nav class="navbar navbar-primary bg-primary fixed-top mb-5">
+    <div class="container">
+      {{#if isAuthenticated}}
+      <a class="navbar-brand" href="/">
+        <img src="http://pic.90sjimg.com/design/01/32/38/43/5934e9907093b.png" width="30" height="30"
+          class="d-inline-block align-top mr-1" alt="家庭記帳本">
+        {{userName}}記帳本
+      </a>
+      {{else}}
+      <a class="navbar-brand" href="/">
+        <img src="http://pic.90sjimg.com/design/01/32/38/43/5934e9907093b.png" width="30" height="30"
+          class="d-inline-block align-top mr-1" alt="家庭記帳本">
+        管理記帳本
+      </a>
+      {{/if}}
+      <div class="d-inline-block">
+        {{#if isAuthenticated}}
+        <a href="/users/logout" class="btn btn-light">
+          <i class="fa fa-sign-out" aria-hidden="true"></i>
+          Log Out
+        </a>
+        {{else}}
+        <a href="/users/register" class="btn btn-light mr-3">Sign Up</a>
+        <a href="/users/login" class="btn btn-warning">Log In</a>
+        {{/if}}
+      </div>
+    </div>
+  </nav>
+
+  {{{body}}}
+
+  <!-- scripts for loading bootstrap related libraries -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"
+    integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
+    integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
+    crossorigin="anonymous"></script>
+  <script src="https://www.w3schools.com/lib/w3.js"></script>
+</body>
+
+</html>
