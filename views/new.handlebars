@@ -1,0 +1,67 @@
+<div class="container">
+  <div class="row mt-5">
+    <div class="col-md-7 col-sm-12 col-xs-12 m-auto">
+      <div class="card card-body border-0">
+        <div class="row my-5">
+          <span class="text-danger col-2 text-right">*必填</span>
+          <h1 class="d-inline-block col-8 text-center new-title">請輸入你的支出</h1>
+        </div>
+        {{> messages }}
+        <form action="/record" method="POST">
+          <!-- name -->
+          <div class="form-group row">
+            <label for="name" class="col-2 text-right"><span class="text-danger">*</span> 名稱
+              :</label>
+            <div class="col-8">
+              <input type="text" class="form-control" name="name" id="name" value="{{{name}}}" maxlength="12" required>
+            </div>
+          </div>
+          <!-- merchant -->
+          <div class="form-group row">
+            <label for="merchant" class="col-2 text-right">商店 :</label>
+            <div class="col-8">
+              <input type="text" class="form-control" name="merchant" id="merchant" value="{{{merchants}}}"
+                maxlength="12">
+            </div>
+          </div>
+          <!-- date -->
+          <div class="form-group row">
+            <label for="date" class="col-2 text-right"><span class="text-danger">*</span> 日期 :</label>
+            <div class="col-8">
+              <input type="date" class="form-control" name="date" id="date" required>
+              <span class="warning-block ml-2">日期區間: 2019. 1. 1~2019. 12. 31</span>
+            </div>
+
+          </div>
+          <!-- category -->
+          <div class="form-group row">
+            <label for="category" class="col-2 text-right"><span class="text-danger">*</span> 類別 :</label>
+            <div class="col-8">
+              <select name="category" class="form-control" id="category" value="{{{category}}}" required>
+                <option value="" selected>類別</option>
+                <option value="living">家居物業</option>
+                <option value="traffic">交通出行</option>
+                <option value="entertainment">休閒娛樂</option>
+                <option value="food">餐飲食品</option>
+                <option value="other">其他</option>
+              </select>
+            </div>
+          </div>
+          <!-- amount -->
+          <div class="form-group row">
+            <label for="amount" class="col-2 text-right"><span class="text-danger">*</span> 金額 :</label>
+            <div class="col-8">
+              <input type="number" class="form-control" name="amount" id="amount" value="{{{amount}}}" maxlength="8"
+                required>
+            </div>
+          </div>
+          <!-- button -->
+          <div class="form-group text-center mt-5">
+            <button class="btn btn-info mr-5">新增支出</button>
+            <a href="/" class="btn btn btn-secondary">取消</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
