@@ -41,7 +41,7 @@
 
 ```
 
-#### 專案的「根目錄」修改 .env 這個檔案
+#### 專案的「根目錄」新增 .env 這個檔案，參考 env example
 
 > #### [Facebook developers](https://developers.facebook.com/) 創建應用程式取得 client ID ' client secret
 
